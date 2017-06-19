@@ -1,0 +1,31 @@
+Q1:
+Before line 6, an "empty throw" occurs.
+However, "empty throw" is only allowed in "catch block" as the resulf of no exception currently processed.
+Therefore, the program terminates.
+
+Q2:
+After compilation and executing the file, we got a message:
+
+	terminate called after throwing an instance of 'double'
+	Aborted
+
+This indicates that the number "3.0" in line 6 is in the type of "double".
+However, the type that "catch" is waiting for is "float", resulting in a failure to catch the exception.
+Therefore, no exception handler can process the exception, leading to termination of the program without printing out the string.
+
+Q3:
+Modify the codes in "tetris.cpp":
+
+  	try {
+     	    mino_ptr = genMino();
+           } catch (bad_alloc & Badalloc) {
+          	cout<<Badalloc.what()<<endl;
+          	cout<<"codes work!"<<endl;
+          	exit(1);
+               }
+
+After numerous loops(also, the codes around "new" have been modified to allocate array), we got a message:
+
+	std::bad_alloc
+	codes work!
+
